@@ -2,39 +2,30 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Game Card</title>
-  <script type="module" crossorigin src="/aurora/assets/test-DFnod_hH.js"></script>
-  <link rel="modulepreload" crossorigin href="/aurora/assets/index-CiSILCBj.js">
-  <link rel="stylesheet" crossorigin href="/aurora/assets/index-Gm157Rrx.css">
-  <link rel="stylesheet" crossorigin href="/aurora/assets/test-gLqT1tqI.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 
 <body>
-	<div class="card">
-		<div>
-			<div class="front">
-				<div>
-					<h1>Hello</h1>
-					<br>
-					<h3>Hello, John!</h3>
-				</div>
-			</div>
-			<div class="back">
-				<div>
-					<h3>Hello</h3>
-					<br>
-					<h1>Xin chào</h1>
-					<!-- <br>
-					<hr>
-					<br>
-					<h3>Hello, John!</h3> -->
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+        function getWikipediaArticle(query) {
+            const url = `https://simple.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${query}`;
+
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    // Process the search results here
+                })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                });
+        }
+
+        // Example usage:
+        getWikipediaArticle("javascript");
+    </script>
 </body>
 
 </html>
