@@ -10,7 +10,7 @@
 <body>
     <script>
         function getWikipediaArticle(query) {
-            const url = `https://simple.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${query}`;
+            const url = `https://simple.wikipedia.org/w/api.php?&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${query}`;
 
             fetch(url)
                 .then((response) => response.json())
