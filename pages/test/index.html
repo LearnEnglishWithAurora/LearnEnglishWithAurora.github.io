@@ -2,30 +2,23 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Game Card</title>
+  <script type="module" crossorigin src="/aurora/assets/test-Br6O0NZB.js"></script>
+  <link rel="modulepreload" crossorigin href="/aurora/assets/index-BPFUryKd.js">
+  <link rel="stylesheet" crossorigin href="/aurora/assets/index-Db_ddTHs.css">
+  <link rel="stylesheet" crossorigin href="/aurora/assets/test-B-plPXgs.css">
 </head>
 
 <body>
-    <script>
-        function getWikipediaArticle(query) {
-            const url = `https://simple.wikipedia.org/w/api.php?&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${query}`;
-
-            fetch(url)
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(data);
-                    // Process the search results here
-                })
-                .catch((error) => {
-                    console.error("Error fetching data:", error);
-                });
-        }
-
-        // Example usage:
-        getWikipediaArticle("javascript");
-    </script>
+	<div id="app">
+		<!-- <button type="button" id="test">test</button>
+		<div id="content"></div> -->
+		<div class="pop-up">
+			<div id="content"></div>
+		</div>
+	</div>
 </body>
 
 </html>
