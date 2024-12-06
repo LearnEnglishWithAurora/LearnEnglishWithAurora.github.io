@@ -81,6 +81,34 @@ document.getElementById("close-reading-menu").onclick = () => {
 };
 
 const units = {
+    "unit-1": [
+        ["artisan", "nghệ nhân"],
+        ["community", "cộng đồng"],
+        ["craft village", "làng nghề thủ công"],
+        ["handicraft", "sản phẩm thủ công"],
+        ["original", "nguyên bản"],
+    ],
+    "unit-2": [
+        ["bustling", "hối hả"],
+        ["downtown", "khu trung tâm"],
+        ["tram", "xe điện"],
+        ["congested", "ùn tắc giao thông"],
+        ["process", "xử lí"],
+    ],
+    "unit-3": [
+        ["accomplish", "đạt được"],
+        ["delay", "chậm trễ"],
+        ["priority", "ưu tiên"],
+        ["stressed out", "căng thẳng"],
+        ["due date", "hạn chót"],
+    ],
+    "unit-4": [
+        ["ancient", "cổ đại"],
+        ["anniversary", "lễ kỉ niệm"],
+        ["lâu đài", "castle"],
+        ["basic", "căn bản"],
+        ["found", "thành lập"],
+    ],
     "unit-5": [
         ["amazing", "tuyệt vời"],
         ["army-like", "như trong quân đội"],
