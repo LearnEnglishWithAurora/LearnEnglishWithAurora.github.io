@@ -10,6 +10,7 @@ const numbers = {
     Science: 31,
     Sports: 50,
 };
+let paragraphs = {};
 
 function getWikipediaArticle(category) {
     const categoryUrl = `https://simple.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&list=categorymembers&cmlimit=${numbers[category]}&cmtitle=Category:${category}`;
@@ -29,10 +30,7 @@ function getWikipediaArticle(category) {
             let pageID = "";
 
             const pageUrl = `https://en.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${pageTitle}`;
-            const imgUrl = `http://en.wikipedia.org/w/api.php?origin=*&action=query&titles=${pageTitle}&prop=pageimages&format=json&pithumbsize=500`;
-
             let pageContent = "";
-            let pageImg = "";
 
             fetch(pageUrl)
                 .then((response) => response.json())
@@ -40,20 +38,7 @@ function getWikipediaArticle(category) {
                     pageID = Object.keys(data.query.pages)[0];
                     pageContent = data.query.pages[pageID].extract;
                     console.log(data.query.pages[pageID].extract);
-                    
-                });
-
-            fetch(imgUrl)
-                .then((response) => response.json())
-                .then((data) => {
-                    pageID = Object.keys(data.query.pages)[0];
-                    try {
-                        pageImg = data.query.pages[pageID].thumbnail.source;
-                    } catch (error) {
-                        pageImg = "/aurora.svg";
-                    }
-
-                    console.log(pageImg);
+                    paragraphs[category] = data.query.pages[pageID].extract;
                 });
         })
         .catch((error) => {
@@ -64,3 +49,17 @@ function getWikipediaArticle(category) {
 categories.forEach((category) => {
     getWikipediaArticle(category);
 });
+
+const popup = document.getElementById("reading-menu");
+
+categories.forEach((category) => {
+    document.getElementById(category).onclick = () => {
+        popup.classList.add("show");
+        document.getElementById("paragraph-holder").innerHTML =
+            paragraphs[category];
+    };
+});
+
+document.getElementById("close-reading-menu").onclick = () => {
+    popup.classList.remove("show");
+};
