@@ -1,0 +1,316 @@
+html,
+body {
+    min-height: 100%;
+}
+
+.hide {
+    display: none;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+main,
+aside {
+    position: absolute;
+    height: 100%;
+    overflow: auto;
+}
+
+header {
+    height: 25px;
+    padding: 25px 30px;
+}
+
+main {
+    width: 60%;
+    background: #f9f9f9;
+    color: #fff;
+}
+
+main header {
+    background: #16984C;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+main header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main header h1 {
+    color: #bff2d4;
+    margin: 0;
+    font-size: 18px;
+    display: inline;
+    vertical-align: 6px;
+}
+
+main ul {
+    list-style: none;
+    margin: 0;
+}
+
+main ul li {
+    display: inline-block;
+}
+
+main ul a {
+    padding: 8px 10px;
+    display: block;
+}
+
+main ul a:hover {
+    color: #bff2d4;
+}
+
+#canvas {
+    padding: 30px;
+}
+
+.app-frame {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.app-header {
+    background: #eee;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 4px 4px 0 0;
+}
+
+.app-header h5 {
+    text-align: center;
+    margin: 0;
+    color: #757575;
+    font-weight: normal;
+}
+
+.app-header .stop-light {
+    float: left;
+}
+
+.app-header .stop-light i {
+    font-size: 12px;
+    color: #bbb;
+    vertical-align: 2px;
+}
+
+.app-body {
+    position: relative;
+    background: #fff;
+    border-radius: 0 0 4px 4px;
+    padding-bottom: 100px;
+}
+
+#search {
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+}
+
+#search label {
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    color: #666;
+}
+
+#search input[type="text"] {
+    border-radius: 50px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    width: 200px;
+}
+
+#search input[type="text"]:focus {
+    outline: none;
+    border-color: #71c192;
+    box-shadow: 0 0 0 1px #71c192;
+}
+
+#search button {
+    border: 0;
+    background: 0;
+    color: #999;
+    padding: 9px;
+    position: relative;
+    left: -45px;
+}
+
+#search button:hover {
+    color: #666;
+}
+
+.diagram {
+    width: 500px;
+    height: 350px;
+    border: 2px dashed #ccc;
+    margin: 90px auto 0;
+    position: relative;
+}
+
+.diagram .placeholder {
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    background: #fafafa;
+    border-radius: 64px;
+    border: 2px dashed #ddd;
+    transition: transform 0.25s;
+}
+
+.diagram .placeholder.filled {
+    background: #fff;
+    border-color: #fff;
+}
+
+.diagram .placeholder.active {
+    background: #d6f0d5;
+    border-color: #b2d7b1;
+    transform: scale(1.1);
+}
+
+.diagram .placeholder.active img {
+    opacity: 0.6;
+}
+
+.diagram img {
+    vertical-align: middle;
+    width: 128px;
+}
+
+.diagram #figure-1 {
+    top: -64px;
+    left: -64px;
+}
+
+.diagram #figure-2 {
+    top: -64px;
+    right: -64px;
+}
+
+.diagram #figure-3 {
+    bottom: -64px;
+    left: -64px;
+}
+
+.diagram #figure-4 {
+    bottom: -64px;
+    right: -64px;
+}
+
+.results {
+    width: 530px;
+    padding: 10px;
+    position: absolute;
+    left: 15px;
+    top: 60px;
+    background: #fff;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    border-radius: 3px;
+    z-index: 1000;
+}
+
+.results img {
+    margin: 10px;
+    vertical-align: middle;
+    cursor: move;
+}
+
+aside {
+    width: 40%;
+    right: 0;
+    background: #222;
+}
+
+aside header {
+    background: #000;
+}
+
+aside header h3,
+aside header h5 {
+    color: #999;
+    margin: 0;
+    font-weight: normal;
+}
+
+aside header h5 {
+    margin-top: 3px;
+}
+
+#console .log {
+    color: #aaa;
+    font-family: monospace;
+    font-size: 12px;
+    overflow: auto;
+}
+
+#console .log h4,
+#console .log pre {
+    padding: 0 20px;
+}
+
+#console .log h4 {
+    color: #fff;
+}
+
+#console .log pre:not(:last-child) {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.toggle-console {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    padding: 4px 10px;
+}
+
+@media (max-width: 1024px) {
+    aside {
+        display: none;
+        position: fixed;
+        width: 100%;
+    }
+
+    aside.active {
+        display: block;
+        z-index: 2000;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    header {
+        padding-right: 60px;
+    }
+
+    .toggle-console {
+        display: inline-block;
+        z-index: 5000;
+    }
+}

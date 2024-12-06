@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/aurora.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurora - Học mọi lúc mọi nơi</title>
+</head>
+
+<body>
+  <style>
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      background-color: white;
+    }
+
+    #loader:after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 5px solid #1e90ff;
+      border-top-color: transparent;
+      animation: 1s linear infinite spin
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0)
+      }
+
+      to {
+        transform: rotate(360deg)
+      }
+    }
+  </style>
+  <div id="loader"></div>
+  <div id="app">
+    <div class="container">
+      <div id="image"></div>
+      <div id="form">
+        <div>
+          <div>
+            <div id="logo">
+              <img src="/aurora.svg" alt="Aurora">
+              <h1>Aurora</h1>
+              <p>Học mọi lúc mọi nơi</p>
+            </div>
+            <input type="email" placeholder="Địa chỉ email" class="input" id="email" />
+            <input type="password" placeholder="Mật khẩu" class="input" id="password" />
+            <p style="color: red; display: none;" id="error">Lỗi! Hãy thử sử dụng tài khoản khác hoặc mật khẩu sai</p>
+            <button type="button" id="submit">Đăng nhập</button>
+            <p>Bạn chưa có tài khoản? Hãy <a id="switch-mode">đăng ký</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./login.js"></script>
+</body>
+
+</html>

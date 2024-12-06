@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function getWikipediaArticle(query) {
+        //     const url = `https://simple.wikipedia.org/w/api.php?&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${query}`;
+
+        //     fetch(url)
+        //         .then((response) => response.json())
+        //         .then((data) => {
+        //             console.log(data);
+        //             // Process the search results here
+        //         })
+        //         .catch((error) => {
+        //             console.error("Error fetching data:", error);
+        //         });
+        // }
+
+        // // Example usage:
+        // getWikipediaArticle("javascript");
+
+        async function fetchSoldierIcons() {
+            // const url = 'https://iconfinder-api-auth.herokuapp.com/v4/icons/search?query=soldier&vector=1&count=30';
+            const url = `https://iconfinder-api-auth.herokuapp.com/v4/icons/search?query=stuff&vector=1&count=30`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (response.ok) {
+                    // console.log('Successfully fetched soldier icons:', data);
+                    // console.log(data.icons[0].raster_sizes[7].formats[0].preview_url);
+                    console.log(data.icons);
+                    // filled-outline
+                    const result = data.icons.filter((icon) => icon.styles && icon.styles[0] && icon.styles[0].identifier == "filled-outline");
+                    console.log(result);
+                } else {
+                    console.error('Error fetching data:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        fetchSoldierIcons();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/aurora.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurora - Học mọi lúc mọi nơi</title>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+    <div id="app">
+        <div class="pop-up" id="add-menu">
+            <span id="close-add-menu" class="material-symbols-outlined close"
+                style="color: black; :hover {color: black;}">
+                close
+            </span>
+            <div>
+                <input type="text" placeholder="Từ tiếng Anh" id="word" />
+                <input type="text" placeholder="Nghĩa tiếng Việt" id="meaning" />
+                <input type="text" placeholder="Ví dụ (tiếng Anh)" id="example" />
+                <button type="button" id="submit">Thêm từ</button>
+            </div>
+        </div>
+        <div class="pop-up" id="test-menu">
+            <span id="close-test-menu" class="material-symbols-outlined close"
+                style="color: black; :hover {color: black;}">
+                close
+            </span>
+            <div>
+                <div class="card">
+                    <div>
+                        <div class="front">
+                            <div>
+                                <h1>Hello</h1>
+                                <br>
+                                <h3>Hello, John!</h3>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <h1>Xin chào</h1>
+                            <p id="right">Đã nhớ</p>
+                            <p id="wrong">Học lại</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div>
+                <div>
+                    <img src="/homepage/flashcard.svg" alt="" style="width: 60%;">
+                </div>
+                <div id="stats">
+                    <div id="green">
+                        <p class="number">?</p>
+                        <p>Từ cần học</p>
+                    </div>
+                    <div id="blue">
+                        <p class="number">?</p>
+                        <p>Từ đã biết</p>
+                    </div>
+                    <div id="yellow">
+                        <p class="number">?</p>
+                        <p>Từ đã thuộc</p>
+                    </div>
+                </div>
+                <div id="buttons">
+                    <div>
+                        <a id="start">Bắt đầu!</a>
+                    </div>
+                    <!-- <div>
+                        <a id="ai">AI</a>
+                    </div> -->
+                    <div>
+                        <a id="add">
+                            <span class="material-symbols-outlined" style="color: white; :hover {color: white;}">
+                                add
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            <a>
+                <span class="material-symbols-outlined" style="color: #213547;">
+                    home
+                </span>
+            </a>
+            <a href="../library/">
+                <span class="material-symbols-outlined">
+                    local_library
+                </span>
+            </a>
+            <a href="../profile/">
+                <span class="material-symbols-outlined">
+                    person
+                </span>
+            </a>
+        </div>
+    </div>
+    <script type="module" src="./card.js"></script>
+    <script type="module" src="./home.js"></script>
+    <script type="module" src="../auth.js"></script>
+</body>
+
+</html>

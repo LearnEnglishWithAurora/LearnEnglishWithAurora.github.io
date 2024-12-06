@@ -1,0 +1,22 @@
+#content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content > div {
+    display: grid;
+}
+
+#avatar > * {
+    width: 200px;
+    margin-bottom: 24px;
+}
+
+#content > div > a {
+    padding: 20px 50px;
+    margin-bottom: 24px;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #f3f9ff;
+}

@@ -1,0 +1,35 @@
+body {
+    background-color: #fcfcef;
+}
+
+.navigation {
+    background-color: #ffffff;
+    border-top: 3px solid #f3f9ff;
+    overflow: hidden;
+    width: 100%;
+    height: calc(60px - 3px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content {
+    height: calc(100% - 60px);
+    width: 100%;
+}
+
+a {
+    cursor: pointer;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+span {
+    transform: scale(1.2);
+    color: rgb(166, 172, 176);
+}
+
+a:hover>span {
+    color: #324f69;
+}

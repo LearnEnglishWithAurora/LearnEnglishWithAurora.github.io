@@ -1,0 +1,13 @@
+.pop-up {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pop-up>div {
+    display: grid;
+    max-width: 600px;
+    width: calc(100% - 35px);
+    /* text-align: left; */
+    text-align: justify;
+}
