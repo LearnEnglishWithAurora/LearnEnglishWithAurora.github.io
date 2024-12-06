@@ -2,6 +2,22 @@ import "./library.css";
 import "/index.css";
 import "/pages/home/home.css";
 
+import { initializeApp } from "firebase/app";
+import {
+    getFirestore,
+    Timestamp,
+    collection,
+    addDoc,
+    doc,
+    updateDoc,
+    getDocs,
+} from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
 const categories = ["Art", "Geography", "History", "Science", "Sports"];
 const numbers = {
     Art: 50,
@@ -63,3 +79,45 @@ categories.forEach((category) => {
 document.getElementById("close-reading-menu").onclick = () => {
     popup.classList.remove("show");
 };
+
+const units = {
+    "unit-5": [
+        ["amazing", "tuyệt vời"],
+        ["army-like", "như trong quân đội"],
+        ["brilliant", "rất thông minh"],
+        ["campus", "khuôn viên trường đại học"],
+        ["confidence", "sự tự tin"],
+        ["coral reef", "rặng san hô"],
+        ["eco-tour", "du lịch sinh thái"],
+        ["embrassing", "làm ngượng ngùng, bối rối"],
+        ["exhilarating", "đầy phấn khích"],
+        ["experience", "trải nghiệm, kinh nghiệm"],
+    ],
+};
+
+for (let i = 1; i <= 5; i++) {
+    console.log("unit-" + i);
+    document.getElementById("unit-" + i).onclick = () => {
+        addCards("unit-" + i);
+        console.log("!");
+    };
+}
+
+let email = "";
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        email = user.email;
+    }
+});
+
+async function addCards(unit) {
+    units[unit].forEach(async (card) => {
+        await addDoc(collection(db, email), {
+            word: card[0],
+            meaning: card[1],
+            example: "",
+            stage: 0,
+            time: Timestamp.now(),
+        });
+    });
+}

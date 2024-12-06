@@ -8,7 +8,7 @@
 }
 
 .articles,
-.videos {
+.cards {
     margin: auto;
     height: 250px;
     max-width: 800px;
@@ -17,14 +17,23 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    overflow-y: hidden;
     gap: 10px;
 }
 
 .articles div,
-.videos div {
+.cards div {
     width: 150px;
     flex: 0 0 auto;
     border: 1px solid black;
+}
+
+.cards>div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .articles>div {
