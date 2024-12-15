@@ -1,8 +1,3 @@
-// const jsonData = await loadJSONData(
-//     "https://hadriengardeur.github.io/web-speech-recommended-voices/json/en.json"
-// );
-// const availableVoices = filterAvailableVoices(jsonData);
-
 let jsonData, availableVoices, chosenVoice;
 
 async function loading() {
@@ -39,6 +34,12 @@ function filterAvailableVoices(jsonData) {
     const availableVoices = [];
     const voices = window.speechSynthesis.getVoices();
 
+    const nativeVoices = voices.filter(
+        (voice) => voice.name.includes("Google") == false
+    );
+
+    if (nativeVoices.length != 0) jsonData.voices = nativeVoices;
+
     jsonData.voices.forEach(function (voice) {
         if (voices.some((apiVoice) => apiVoice.name === voice.name)) {
             availableVoices.push(voice);
@@ -62,11 +63,9 @@ export async function speaking(text) {
     msg.voice = chosenVoice;
     msg.volume = 1;
     msg.rate = 1;
-    msg.pitch = 2;
     msg.text = text;
     msg.lang = "en";
     speechSynthesis.speak(msg);
 }
 
-console.log(window.speechSynthesis.getVoices());
 console.log(window.speechSynthesis.getVoices());
