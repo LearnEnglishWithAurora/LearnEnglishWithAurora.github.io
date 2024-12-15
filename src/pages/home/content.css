@@ -73,7 +73,7 @@
     background-color: #1999cf;
 }
 
-#ai {
+/* #ai {
     background-color: #ffcd46;
 }
 
@@ -83,7 +83,7 @@
 
 #ai:active {
     background-color: #e6b940;
-}
+} */
 
 #stats {
     display: grid;
