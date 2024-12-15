@@ -163,44 +163,52 @@ document.getElementById("close-add-menu").onclick = () => {
     document.getElementById("add-menu").classList.toggle("show");
 };
 
-// Time loop for 1 minutes to update cards'states
-setInterval(() => {
-    let i = 0;
-    blue.forEach((blueCard) => {
-        if (
-            Timestamp.now().seconds -
-                (stages[blueCard.data.stage] + blueCard.data.time.seconds) >=
-            0
-        ) {
-            green.push(blueCard);
-            console.log(
-                blueCard,
-                Timestamp.now().seconds,
-                stages[blueCard.data.stage] + blueCard.data.time.seconds
-            );
-            blue.splice(i, 1);
-        }
-        i++;
-    });
+// Time loop to update cards'states
+setTimeout(() => {
+    setInterval(() => {
+        let i = 0;
+        blue.forEach((blueCard) => {
+            if (
+                Timestamp.now().seconds -
+                    (stages[blueCard.data.stage] +
+                        blueCard.data.time.seconds) >=
+                0
+            ) {
+                green.push(blueCard);
+                console.log(
+                    blueCard,
+                    Timestamp.now().seconds,
+                    stages[blueCard.data.stage] + blueCard.data.time.seconds
+                );
+                blue.splice(i, 1);
+            }
+            i++;
+        });
 
-    i = 0;
-    yellow.forEach((yellowCard) => {
-        if (
-            Timestamp.now().seconds -
-                (stages[yellowCard.data.stage] +
-                    yellowCard.data.time.seconds) >=
-            0
-        ) {
-            green.push(yellowCard);
-            yellow.splice(i, 1);
-        }
-        i++;
-    });
+        i = 0;
+        yellow.forEach((yellowCard) => {
+            if (
+                Timestamp.now().seconds -
+                    (stages[yellowCard.data.stage] +
+                        yellowCard.data.time.seconds) >=
+                0
+            ) {
+                green.push(yellowCard);
+                yellow.splice(i, 1);
+            }
+            i++;
+        });
 
-    [...numbers][0].innerHTML = green.length;
-    [...numbers][1].innerHTML = blue.length;
-    [...numbers][2].innerHTML = yellow.length;
-}, 2_000);
+        if (green.length == 0)
+            document.getElementById("start").classList.add("disabled");
+        else document.getElementById("start").classList.remove("disabled");
+
+        [...numbers][0].innerHTML = green.length;
+        [...numbers][1].innerHTML = blue.length;
+        [...numbers][2].innerHTML = yellow.length;
+    }, 0);
+    // Must be after init 1 second to assure that the cards array are load completely
+}, 1_000);
 
 // Mange card and test
 const card = document.querySelector(".card").children[0];
