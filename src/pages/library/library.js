@@ -8,9 +8,6 @@ import {
     Timestamp,
     collection,
     addDoc,
-    doc,
-    updateDoc,
-    getDocs,
 } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -80,6 +77,7 @@ document.getElementById("close-reading-menu").onclick = () => {
     popup.classList.remove("show");
 };
 
+// Words for each unit
 const units = {
     "unit-1": [
         ["artisan", "nghệ nhân"],
@@ -127,10 +125,10 @@ for (let i = 1; i <= 5; i++) {
     console.log("unit-" + i);
     document.getElementById("unit-" + i).onclick = () => {
         addCards("unit-" + i);
-        console.log("!");
     };
 }
 
+// Add cards when clicked
 let email = "";
 onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -149,3 +147,11 @@ async function addCards(unit) {
         });
     });
 }
+
+// Get selected text
+document.onmouseup = () => {
+    const selectObject = window.getSelection();
+    const selectRange = selectObject.getRangeAt(0);
+    const selectedText = selectRange.toString();
+    console.log(selectedText);
+};

@@ -129,24 +129,10 @@ document.getElementById("submit").onclick = async () => {
         document.getElementById("meaning").value = "";
         document.getElementById("example").value = "";
 
-        // let iconURL = "";
-
-        // const url = `https://iconfinder-api-auth.herokuapp.com/v4/icons/search?query=flat+color+${word}&vector=1&count=1`;
-        // try {
-        //     const response = await fetch(url);
-        //     const data = await response.json();
-
-        //     if (response.ok)
-        //         iconURL = data.icons[0].raster_sizes[6].formats[0].preview_url;
-        // } catch (error) {
-        //     console.error("Error:", error);
-        // }
-
         await addDoc(collection(db, email), {
             word: word,
             meaning: meaning,
             example: example,
-            // icon: iconURL,
             stage: 0,
             time: Timestamp.now(),
         }).then(function (docRef) {
@@ -157,7 +143,6 @@ document.getElementById("submit").onclick = async () => {
                     word: word,
                     meaning: meaning,
                     example: example,
-                    // icon: iconURL,
                     stage: 0,
                     time: Timestamp.now(),
                 },
@@ -279,17 +264,6 @@ function getCard(front, back) {
             ${green[0].data.example ? `<h3>${green[0].data.example}</h3>` : ``}
         </div>
     `;
-
-    // back.innerHTML = `
-    //     <div>
-    //         ${green[0].data.icon ? `<img src="${green[0].data.icon}">` : ``}
-    //         <h3>${green[0].data.word}</h3>
-    //         <h1>${green[0].data.meaning}</h1>
-    //         ${green[0].data.example ? `<h3>${green[0].data.example}</h3>` : ``}
-    //         <p id="right">Đã nhớ</p>
-    //         <p id="wrong">Học lại</p>
-    //     </div>
-    // `;
 
     back.innerHTML = `
         <div>
