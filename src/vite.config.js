@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 import vitePluginRequire from "vite-plugin-require";
 
 export default defineConfig({
-    base: '/aurora',
+    // base: '/aurora',
     plugins: [vitePluginRequire.default()],
     define: {
         firebaseConfig: {

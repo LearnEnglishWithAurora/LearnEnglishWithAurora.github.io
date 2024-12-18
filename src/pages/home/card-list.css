@@ -1,0 +1,39 @@
+.green-card {
+    border: #4ca94e solid;
+}
+
+.blue-card {
+    border: #528afb solid;
+}
+
+.yellow-card {
+    border: #f6bf03 solid;
+}
+
+#card-list p {
+    margin: 0;
+    font-size: small;
+}
+
+#card-list>div {
+    width: 100%;
+    height: 75px;
+    border-radius: 15px;
+    /* border: #f5f8ff solid; */
+    margin-bottom: 15px;
+
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 2fr 5fr 2fr;
+}
+
+#card-list>div>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#card-list>div>div>div {
+    width: 100%;
+    text-align: justify;
+}

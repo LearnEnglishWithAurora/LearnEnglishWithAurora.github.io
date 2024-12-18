@@ -16,7 +16,7 @@
 #buttons {
     display: grid;
     grid-auto-rows: 1fr;
-    grid-template-columns: 8fr 1fr;
+    grid-template-columns: 7fr 1fr 1fr;
 }
 
 #buttons>* {
@@ -33,7 +33,7 @@
     width: 100%;
 }
 
-#ai,
+#list,
 #add {
     width: 3rem;
 }
@@ -59,31 +59,22 @@
 }
 
 #start:not(.disabled),
-#add {
+#add,
+#list {
     background-color: #1dace9;
 }
 
 #start:hover:not(.disabled),
-#add:hover {
+#add:hover,
+#list:hover {
     background-color: #1ba4de;
 }
 
 #start:active:not(.disabled),
-#add:active {
+#add:active,
+#list:active {
     background-color: #1999cf;
 }
-
-/* #ai {
-    background-color: #ffcd46;
-}
-
-#ai:hover {
-    background-color: #f1c242;
-}
-
-#ai:active {
-    background-color: #e6b940;
-} */
 
 #stats {
     display: grid;

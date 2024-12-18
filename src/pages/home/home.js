@@ -1,10 +1,13 @@
+import "/index.css";
 import "./home.css";
 import "./content.css";
-import "/index.css";
 import "./card.css";
+import "./card-list.css";
 
-import "./card.js";
-import { speaking } from "./card.js";
+import "../speech.js";
+import { speaking } from "../speech.js";
+
+import "./modules/card-list.js";
 
 import { initializeApp } from "firebase/app";
 import {
@@ -22,8 +25,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// 11 stages
-const stages = [
+// 11 learningStages
+const learningStages = [
     0, // zero
     60, // 1 minutes
     120, // 2 minutes
@@ -37,8 +40,8 @@ const stages = [
     1209600, // 14 days
 ];
 
-const cards = [];
-let green = [],
+export const cards = [];
+export let green = [],
     blue = [],
     yellow = [];
 
@@ -54,6 +57,37 @@ const numbers = document.getElementsByClassName("number");
     ? JSON.parse(localStorage.getItem("yellow")).length
     : "?";
 
+document.getElementById("add").onclick = () => {
+    document.getElementById("add-menu").classList.toggle("show");
+};
+
+document.getElementById("close-add-menu").onclick = () => {
+    document.getElementById("add-menu").classList.toggle("show");
+};
+
+document.getElementById("close-test-menu").onclick = () => {
+    document.getElementById("test-menu").classList.toggle("show");
+
+    card.style = "";
+    card.classList = "";
+    revealed = false;
+    direction = "none";
+};
+
+document.getElementById("start").onclick = () => {
+    if (green.length != 0) {
+        document.getElementById("test-menu").classList.toggle("show");
+
+        // Shuffle cards
+        green = green.sort((a, b) => 0.5 - Math.random());
+
+        const front = card.getElementsByClassName("front")[0];
+        const back = card.getElementsByClassName("back")[0];
+
+        getCard(front, back);
+    }
+};
+
 let email = "";
 onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -66,19 +100,20 @@ onAuthStateChanged(auth, async (user) => {
             cards.push({ id: doc.id, data: doc.data() });
             console.log(
                 doc.data().stage,
-                stages[doc.data().stage],
+                learningStages[doc.data().stage],
                 Timestamp.now().seconds -
-                    (stages[doc.data().stage] + doc.data().time.seconds)
+                    (learningStages[doc.data().stage] + doc.data().time.seconds)
             );
             if (
                 Timestamp.now().seconds -
-                    (stages[doc.data().stage] + doc.data().time.seconds) >=
+                    (learningStages[doc.data().stage] +
+                        doc.data().time.seconds) >=
                 0
             ) {
                 green.push({ id: doc.id, data: doc.data() });
             } else {
                 // Learned duration less than 7 days
-                if (doc.data().stage < stages.length - 2) {
+                if (doc.data().stage < learningStages.length - 2) {
                     blue.push({ id: doc.id, data: doc.data() });
                 } else {
                     yellow.push({ id: doc.id, data: doc.data() });
@@ -155,14 +190,6 @@ document.getElementById("submit").onclick = async () => {
     }
 };
 
-document.getElementById("add").onclick = () => {
-    document.getElementById("add-menu").classList.toggle("show");
-};
-
-document.getElementById("close-add-menu").onclick = () => {
-    document.getElementById("add-menu").classList.toggle("show");
-};
-
 // Time loop to update cards'states
 setTimeout(() => {
     setInterval(() => {
@@ -170,7 +197,7 @@ setTimeout(() => {
         blue.forEach((blueCard) => {
             if (
                 Timestamp.now().seconds -
-                    (stages[blueCard.data.stage] +
+                    (learningStages[blueCard.data.stage] +
                         blueCard.data.time.seconds) >=
                 0
             ) {
@@ -178,7 +205,8 @@ setTimeout(() => {
                 console.log(
                     blueCard,
                     Timestamp.now().seconds,
-                    stages[blueCard.data.stage] + blueCard.data.time.seconds
+                    learningStages[blueCard.data.stage] +
+                        blueCard.data.time.seconds
                 );
                 blue.splice(i, 1);
             }
@@ -189,7 +217,7 @@ setTimeout(() => {
         yellow.forEach((yellowCard) => {
             if (
                 Timestamp.now().seconds -
-                    (stages[yellowCard.data.stage] +
+                    (learningStages[yellowCard.data.stage] +
                         yellowCard.data.time.seconds) >=
                 0
             ) {
@@ -236,29 +264,6 @@ card.addEventListener("mousedown", function () {
         };
     }
 });
-
-document.getElementById("close-test-menu").onclick = () => {
-    document.getElementById("test-menu").classList.toggle("show");
-
-    card.style = "";
-    card.classList = "";
-    revealed = false;
-    direction = "none";
-};
-
-document.getElementById("start").onclick = () => {
-    if (green.length != 0) {
-        document.getElementById("test-menu").classList.toggle("show");
-
-        // Shuffle cards
-        green = green.sort((a, b) => 0.5 - Math.random());
-
-        const front = card.getElementsByClassName("front")[0];
-        const back = card.getElementsByClassName("back")[0];
-
-        getCard(front, back);
-    }
-};
 
 function getCard(front, back) {
     speaking(
@@ -388,7 +393,7 @@ function dragElement(element) {
                     9
                 );
                 green[0].data.time = Timestamp.now();
-                if (green[0].data.stage <= stages.length - 3) {
+                if (green[0].data.stage <= learningStages.length - 3) {
                     blue.push(green.shift());
                 } else {
                     yellow.push(green.shift());

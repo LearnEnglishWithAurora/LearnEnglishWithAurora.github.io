@@ -25,6 +25,14 @@
                 <button type="button" id="submit">Thêm từ</button>
             </div>
         </div>
+        <div class="pop-up" id="card-list-menu">
+            <span id="close-card-list-menu" class="material-symbols-outlined close"
+                style="color: black; :hover {color: black;}">
+                close
+            </span>
+            <div id="card-list">
+            </div>
+        </div>
         <div class="pop-up" id="test-menu">
             <span id="close-test-menu" class="material-symbols-outlined close"
                 style="color: black; :hover {color: black;}">
@@ -72,9 +80,13 @@
                     <div>
                         <a id="start">Bắt đầu!</a>
                     </div>
-                    <!-- <div>
-                        <a id="ai">AI</a>
-                    </div> -->
+                    <div>
+                        <a id="list">
+                            <span class="material-symbols-outlined" style="color: white; :hover {color: white;}">
+                                view_carousel
+                            </span>
+                        </a>
+                    </div>
                     <div>
                         <a id="add">
                             <span class="material-symbols-outlined" style="color: white; :hover {color: white;}">
@@ -103,7 +115,7 @@
             </a>
         </div>
     </div>
-    <script type="module" src="./card.js"></script>
+    <script type="module" src="../speech.js"></script>
     <script type="module" src="./home.js"></script>
     <script type="module" src="../auth.js"></script>
 </body>

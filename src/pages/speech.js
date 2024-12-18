@@ -63,6 +63,7 @@ export async function speaking(text) {
     msg.voice = chosenVoice;
     msg.volume = 1;
     msg.rate = 1;
+    msg.pitch = 1;
     msg.text = text;
     msg.lang = "en";
     speechSynthesis.speak(msg);
