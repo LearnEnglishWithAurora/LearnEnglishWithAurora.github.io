@@ -13,6 +13,7 @@ const auth = getAuth(app);
 document.getElementById("sign-out").onclick = () => {
     signOut(auth);
     localStorage.setItem("state", "false");
+    localStorage.setItem("email", "");
 };
 
 document.getElementById("email").innerHTML = localStorage.getItem("email");

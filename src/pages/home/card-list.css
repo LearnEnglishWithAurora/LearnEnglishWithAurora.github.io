@@ -10,16 +10,31 @@
     border: #f6bf03 solid;
 }
 
+
+#card-list {
+    overflow-y: scroll;
+    height: 100vh;
+
+    display: block;
+}
+
+#card-list>div:first-child {
+    margin-top: 10px;
+}
+
+#card-list::-webkit-scrollbar {
+    display: none;
+}
+
 #card-list p {
     margin: 0;
     font-size: small;
 }
 
 #card-list>div {
-    width: 100%;
+    /* width: 100%; */
     height: 75px;
     border-radius: 15px;
-    /* border: #f5f8ff solid; */
     margin-bottom: 15px;
 
     display: grid;

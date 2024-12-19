@@ -129,7 +129,7 @@ for (let i = 1; i <= 5; i++) {
 }
 
 // Add cards when clicked
-let email = "";
+let email = localStorage.getItem("email");
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         email = user.email;

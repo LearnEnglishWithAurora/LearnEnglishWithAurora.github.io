@@ -60,19 +60,19 @@
 
 #start:not(.disabled),
 #add,
-#list {
+#list:not(.disabled) {
     background-color: #1dace9;
 }
 
 #start:hover:not(.disabled),
 #add:hover,
-#list:hover {
+#list:hover:not(.disabled) {
     background-color: #1ba4de;
 }
 
 #start:active:not(.disabled),
 #add:active,
-#list:active {
+#list:active:not(.disabled) {
     background-color: #1999cf;
 }
 

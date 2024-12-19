@@ -40,8 +40,7 @@ const learningStages = [
     1209600, // 14 days
 ];
 
-export const cards = [];
-export let green = [],
+let green = [],
     blue = [],
     yellow = [];
 
@@ -56,6 +55,15 @@ const numbers = document.getElementsByClassName("number");
 [...numbers][2].innerHTML = localStorage.getItem("yellow")
     ? JSON.parse(localStorage.getItem("yellow")).length
     : "?";
+
+// Set start button to disabled mode without being delay 1 second
+if (
+    (localStorage.getItem("green")
+        ? JSON.parse(localStorage.getItem("green")).length
+        : 0) == 0
+)
+    document.getElementById("start").classList.add("disabled");
+else document.getElementById("start").classList.remove("disabled");
 
 document.getElementById("add").onclick = () => {
     document.getElementById("add-menu").classList.toggle("show");
@@ -88,7 +96,7 @@ document.getElementById("start").onclick = () => {
     }
 };
 
-let email = "";
+let email = localStorage.getItem("email");
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         email = user.email;
@@ -97,7 +105,6 @@ onAuthStateChanged(auth, async (user) => {
         const querySnapshot = await getDocs(q);
 
         querySnapshot.forEach((doc) => {
-            cards.push({ id: doc.id, data: doc.data() });
             console.log(
                 doc.data().stage,
                 learningStages[doc.data().stage],
@@ -121,13 +128,10 @@ onAuthStateChanged(auth, async (user) => {
             }
         });
 
-        console.log(cards);
-
         [...numbers][0].innerHTML = green.length;
         [...numbers][1].innerHTML = blue.length;
         [...numbers][2].innerHTML = yellow.length;
 
-        localStorage.setItem("cards", JSON.stringify(cards));
         localStorage.setItem("green", JSON.stringify(green));
         localStorage.setItem("blue", JSON.stringify(blue));
         localStorage.setItem("yellow", JSON.stringify(yellow));
@@ -184,7 +188,6 @@ document.getElementById("submit").onclick = async () => {
             });
             [...numbers][0].innerHTML = green.length;
 
-            localStorage.setItem("cards", JSON.stringify(cards));
             localStorage.setItem("green", JSON.stringify(green));
         });
     }
@@ -193,6 +196,16 @@ document.getElementById("submit").onclick = async () => {
 // Time loop to update cards'states
 setTimeout(() => {
     setInterval(() => {
+        green = localStorage.getItem("green")
+            ? JSON.parse(localStorage.getItem("green"))
+            : [];
+        blue = localStorage.getItem("blue")
+            ? JSON.parse(localStorage.getItem("blue"))
+            : [];
+        yellow = localStorage.getItem("yellow")
+            ? JSON.parse(localStorage.getItem("yellow"))
+            : [];
+
         let i = 0;
         blue.forEach((blueCard) => {
             if (
