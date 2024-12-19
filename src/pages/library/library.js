@@ -103,7 +103,7 @@ const units = {
     "unit-4": [
         ["ancient", "cổ đại"],
         ["anniversary", "lễ kỉ niệm"],
-        ["lâu đài", "castle"],
+        ["castle", "lâu đài"],
         ["basic", "căn bản"],
         ["found", "thành lập"],
     ],

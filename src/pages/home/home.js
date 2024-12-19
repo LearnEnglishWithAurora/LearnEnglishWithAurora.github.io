@@ -73,8 +73,8 @@ document.getElementById("close-add-menu").onclick = () => {
     document.getElementById("add-menu").classList.toggle("show");
 };
 
-document.getElementById("close-test-menu").onclick = () => {
-    document.getElementById("test-menu").classList.toggle("show");
+document.getElementById("close-learn-menu").onclick = () => {
+    document.getElementById("learn-menu").classList.toggle("show");
 
     card.style = "";
     card.classList = "";
@@ -84,10 +84,11 @@ document.getElementById("close-test-menu").onclick = () => {
 
 document.getElementById("start").onclick = () => {
     if (green.length != 0) {
-        document.getElementById("test-menu").classList.toggle("show");
+        document.getElementById("learn-menu").classList.toggle("show");
 
         // Shuffle cards
         green = green.sort((a, b) => 0.5 - Math.random());
+        localStorage.setItem("green", JSON.stringify(green));
 
         const front = card.getElementsByClassName("front")[0];
         const back = card.getElementsByClassName("back")[0];
@@ -215,12 +216,12 @@ setTimeout(() => {
                 0
             ) {
                 green.push(blueCard);
-                console.log(
-                    blueCard,
-                    Timestamp.now().seconds,
-                    learningStages[blueCard.data.stage] +
-                        blueCard.data.time.seconds
-                );
+                // console.log(
+                //     blueCard,
+                //     Timestamp.now().seconds,
+                //     learningStages[blueCard.data.stage] +
+                //         blueCard.data.time.seconds
+                // );
                 blue.splice(i, 1);
             }
             i++;
@@ -247,6 +248,10 @@ setTimeout(() => {
         [...numbers][0].innerHTML = green.length;
         [...numbers][1].innerHTML = blue.length;
         [...numbers][2].innerHTML = yellow.length;
+
+        // localStorage.setItem("green", JSON.stringify(green));
+        // localStorage.setItem("blue", JSON.stringify(blue));
+        // localStorage.setItem("yellow", JSON.stringify(yellow));
     }, 0);
     // Must be after init 1 second to assure that the cards array are load completely
 }, 1_000);
@@ -462,7 +467,7 @@ function dragElement(element) {
                 getCard(front, back);
             } else {
                 // If no card left
-                document.getElementById("test-menu").classList.toggle("show");
+                document.getElementById("learn-menu").classList.toggle("show");
             }
         }
 
