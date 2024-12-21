@@ -2,8 +2,8 @@ import "./library.css";
 import "/index.css";
 import "/pages/home/home.css";
 
-import { words } from "./modules/ninethGrade";
-console.log(words);
+import { words, paragraphs } from "./modules/ninethGrade";
+console.log(words, paragraphs);
 
 import { initializeApp } from "firebase/app";
 import {
@@ -47,11 +47,29 @@ document.onmouseup = () => {
     } catch { }
 };
 
+// Add contents
+function createElementFromHTML(htmlString) {
+    var div = document.createElement("div");
+    div.innerHTML = htmlString.trim();
+    return div.firstChild;
+}
+
+for (let i = 1; i <= 12; i++) {
+    let button = createElementFromHTML(`<button class="accordion">Unit ${i}</button>`);
+    document.getElementById("grade-nine").appendChild(button);
+    let content = createElementFromHTML(
+        `<div class="panel">
+            <div><a id="c-${i}">Thêm thẻ của Unit ${i} vào bộ thẻ</a></div>
+            <div><a id="p-${i}">Đọc bài đọc có sử dụng các từ của Unit ${i}</a></div>
+        </div>`
+    );
+    document.getElementById("grade-nine").appendChild(content);
+}
+
 // Expand the acordion list when click
 var acc = document.getElementsByClassName("accordion");
-var i;
 
-for (i = 0; i < acc.length; i++) {
+for (let i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function () {
         this.classList.toggle("active");
         var panel = this.nextElementSibling;
@@ -64,11 +82,29 @@ for (i = 0; i < acc.length; i++) {
 }
 
 // Add cards
-// console.log(document.getElementById("1"))
-for (i = 1; i <= 12; i++) {
-    const j = i;
-    document.getElementById(i).onclick = () => {
-        console.log(j, words[j]);
-        addCards(words[j - 1]);
+for (let i = 1; i <= 12; i++) {
+    document.getElementById(`c-${i}`).onclick = () => {
+        // console.log(i, words[i - 1]);
+        addCards(words[i - 1]);
+
+        document.getElementById("alert").style.transform = "scale(1)";
+        document.getElementById("alert").style.visibility = "visible";
+        document.getElementById("alert").innerHTML = `Đã thêm ${words[i].length} từ của Unit ${i} vào bộ thẻ.`;
+        setTimeout(() => {
+            document.getElementById("alert").style.transform = "scale(0)";
+        }, 2_000);
+    }
+}
+
+// Read paragraphs
+const popup = document.getElementById("reading-menu");
+document.getElementById("close-reading-menu").onclick = () => {
+    popup.classList.remove("show");
+};
+
+for (let i = 1; i <= 12; i++) {
+    document.getElementById(`p-${i}`).onclick = () => {
+        popup.classList.add("show");
+        document.getElementById("paragraph-holder").innerHTML = paragraphs[i - 1];
     }
 }
