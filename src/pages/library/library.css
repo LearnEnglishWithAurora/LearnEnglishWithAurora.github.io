@@ -78,31 +78,42 @@
 
 /* Test */
 
-.caret {
+.accordion {
+    background-color: #f4f4f4;
+    color: #444;
     cursor: pointer;
-    user-select: none;
-}
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
 
-.caret::before {
-    content: "\25B6";
-    color: black;
-    display: inline-block;
-    margin-right: 6px;
-}
-
-.caret-down::before {
-    transform: rotate(90deg);
-}
-
-.nested {
-    display: none;
-}
-
-.nested>div {
-    max-width: 500px;
-    width: calc(100% - 30px);
+    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 15px;
 }
 
 .active {
-    display: block;
+    /* background-color: #ccc; */
+
+    border-radius: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.active+.panel {
+    padding: 18px;
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }

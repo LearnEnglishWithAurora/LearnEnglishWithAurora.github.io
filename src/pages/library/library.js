@@ -44,15 +44,20 @@ document.onmouseup = () => {
         const selectRange = selectObject.getRangeAt(0);
         const selectedText = selectRange.toString();
         console.log(selectedText);
-    } catch {}
+    } catch { }
 };
 
-var toggler = document.getElementsByClassName("caret");
+var acc = document.getElementsByClassName("accordion");
 var i;
 
-for (i = 0; i < toggler.length; i++) {
-    toggler[i].addEventListener("click", function () {
-        this.parentElement.querySelector(".nested").classList.toggle("active");
-        this.classList.toggle("caret-down");
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        }
     });
 }
