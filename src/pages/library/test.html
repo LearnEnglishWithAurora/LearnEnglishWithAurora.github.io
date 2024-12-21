@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lớp Học</title>
+    <style>
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            transition: 0.4s;
+        }
+
+        .active {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="accordion">Lớp 1</button>
+        <div class="panel">
+            <ul>
+                <li>Đề thi Toán lớp 1</li>
+                <li>Đề thi Tiếng Việt lớp 1</li>
+                <li>Đề thi Tiếng Anh lớp 1</li>
+            </ul>
+            <ul>
+                <li>Bài tập cuối tuần Toán lớp 1</li>
+                <li>Bài tập cuối tuần Tiếng Việt lớp 1</li>
+                <li>Bài tập Toán lớp 1 (hàng ngày)</li>
+                <li>Bài tập Tiếng Việt lớp 1 (hàng ngày)</li>
+            </ul>
+            <ul>
+                <li>Giáo án lớp 1 Kết nối tri thức</li>
+                <li>Giáo án lớp 1 Chân trời sáng tạo</li>
+                <li>Giáo án lớp 1 Cánh diều</li>
+            </ul>
+        </div>
+
+        <button class="accordion">Lớp 2</button>
+        <div class="panel">
+            <p>Nội dung cho Lớp 2</p>
+        </div>
+
+        <button class="accordion">Lớp 3</button>
+        <div class="panel">
+            <p>Nội dung cho Lớp 3</p>
+        </div>
+
+        <button class="accordion">Lớp 4</button>
+        <div class="panel">
+            <p>Nội dung cho Lớp 4</p>
+        </div>
+
+        <button class="accordion">Lớp 5</button>
+        <div class="panel">
+            <p>Nội dung cho Lớp 5</p>
+        </div>
+
+        <button class="accordion">Lớp 6</button>
+        <div class="panel">
+            <p>Nội dung cho Lớp 6</p>
+        </div>
+    </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

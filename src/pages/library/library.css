@@ -5,48 +5,28 @@
 #content {
     overflow-x: hidden;
     overflow-y: scroll;
-}
 
-.articles,
-.cards {
-    margin: auto;
-    height: 250px;
-    max-width: 800px;
-    width: calc(100% - 30px);
-
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    gap: 10px;
-}
-
-.articles div,
-.cards div {
-    width: 150px;
-    flex: 0 0 auto;
-    border: 1px solid black;
-}
-
-.cards>div {
-    height: 100%;
-    display: flex;
-    justify-content: center;
+    text-align: justify;
+    /* display: flex;
     align-items: center;
-    cursor: pointer;
+    justify-content: center; */
+}
+
+#content span {
+    color: black;
 
     background-color: white;
-    font-weight: bolder;
+    border: #f4f9ff solid;
+    border-radius: 5px;
+    height: 30px;
+    /* padding: 10px; */
+    margin: 10px;
 }
 
-.articles>div {
-    cursor: pointer;
-}
-
-h2 {
-    padding: 20px;
-    width: calc(100% - 30px);
-    text-align: left;
+#content>div {
+    display: grid;
+    max-width: 500px;
+    margin: auto;
 }
 
 .pop-up:not(.show) {
@@ -94,4 +74,46 @@ h2 {
     /* margin: 30px 30px 30px 30px; */
 
     text-align: justify;
+}
+
+/* Test */
+
+.accordion {
+    background-color: #f4f4f4;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+
+    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 15px;
+}
+
+.active {
+    /* background-color: #ccc; */
+
+    border-radius: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.active+.panel {
+    padding: 18px;
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
