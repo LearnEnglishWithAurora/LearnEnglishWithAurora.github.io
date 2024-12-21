@@ -47,6 +47,7 @@ document.onmouseup = () => {
     } catch { }
 };
 
+// Expand the acordion list when click
 var acc = document.getElementsByClassName("accordion");
 var i;
 
@@ -60,4 +61,14 @@ for (i = 0; i < acc.length; i++) {
             panel.style.maxHeight = panel.scrollHeight + "px";
         }
     });
+}
+
+// Add cards
+// console.log(document.getElementById("1"))
+for (i = 1; i <= 12; i++) {
+    const j = i;
+    document.getElementById(i).onclick = () => {
+        console.log(j, words[j]);
+        addCards(words[j - 1]);
+    }
 }
