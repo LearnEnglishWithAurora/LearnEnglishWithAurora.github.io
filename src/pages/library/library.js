@@ -2,6 +2,9 @@ import "./library.css";
 import "/index.css";
 import "/pages/home/home.css";
 
+import "../speech.js";
+import { speaking } from "../speech.js";
+
 import { words, paragraphs } from "./modules/ninethGrade";
 console.log(words, paragraphs);
 
@@ -38,13 +41,45 @@ async function addCards(cards) {
 }
 
 // Get selected text
-document.onmouseup = () => {
-    try {
-        const selectObject = window.getSelection();
-        const selectRange = selectObject.getRangeAt(0);
-        const selectedText = selectRange.toString();
-        console.log(selectedText);
-    } catch { }
+let previousSelection = "";
+document.onmouseup = (event) => {
+    speechSynthesis.cancel();
+    if (popup.classList.contains("show")) {
+        try {
+            const selectObject = window.getSelection();
+            const selectRange = selectObject.getRangeAt(0);
+            const selectedText = selectRange.toString();
+
+            if (selectedText.trim() != "" && previousSelection != selectedText.trim()) {
+                document.getElementById("selection").style.display = "block";
+                document.getElementById("selection").style.top = event.clientY + "px";
+                document.getElementById("selection").style.left = event.clientX + "px";
+                document.getElementById("selection").style.maxWidth = (screen.width - event.clientX - 20) + "px";
+
+                speaking(selectedText.trim());
+
+                const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=vi&dt=t&q=${encodeURI(
+                    selectedText.trim()
+                )}`;
+                fetch(url)
+                    .then((response) => response.json())
+                    .then((json) => {
+                        console.log(json[0].map((item) => item[0]).join(""));
+                        document.getElementById("selection-text").innerHTML = json[0]
+                            .map((item) => item[0])
+                            .join("");
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        return "";
+                    });
+
+                previousSelection = selectedText.trim();
+            } else {
+                document.getElementById("selection").style.display = "none";
+            }
+        } catch { }
+    }
 };
 
 // Add contents

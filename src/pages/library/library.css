@@ -138,3 +138,20 @@
     visibility: hidden;
     /* visibility: visible; */
 }
+
+#selection {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    padding: 10px;
+
+    border: 1px solid;
+    border-radius: 10px;
+
+}
+
+#selection span {
+    border: none;
+    margin: 0;
+}
