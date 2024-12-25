@@ -135,6 +135,7 @@ for (let i = 1; i <= 12; i++) {
 const popup = document.getElementById("reading-menu");
 document.getElementById("close-reading-menu").onclick = () => {
     popup.classList.remove("show");
+    speechSynthesis.cancel();
 };
 
 for (let i = 1; i <= 12; i++) {

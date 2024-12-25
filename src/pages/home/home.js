@@ -80,6 +80,8 @@ document.getElementById("close-learn-menu").onclick = () => {
     card.classList = "";
     revealed = false;
     direction = "none";
+
+    speechSynthesis.cancel();
 };
 
 document.getElementById("start").onclick = () => {
