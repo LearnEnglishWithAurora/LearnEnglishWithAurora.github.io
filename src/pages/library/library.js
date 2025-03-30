@@ -5,8 +5,7 @@ import "/pages/home/home.css";
 import "../speech.js";
 import { speaking } from "../speech.js";
 
-import { words, paragraphs } from "./modules/ninethGrade";
-console.log(words, paragraphs);
+import { words, paragraphs, unitThemes } from "./modules/ninethGrade";
 
 import { initializeApp } from "firebase/app";
 import {
@@ -50,11 +49,17 @@ document.onmouseup = (event) => {
             const selectRange = selectObject.getRangeAt(0);
             const selectedText = selectRange.toString();
 
-            if (selectedText.trim() != "" && previousSelection != selectedText.trim()) {
+            if (
+                selectedText.trim() != "" &&
+                previousSelection != selectedText.trim()
+            ) {
                 document.getElementById("selection").style.display = "block";
-                document.getElementById("selection").style.top = event.clientY + "px";
-                document.getElementById("selection").style.left = event.clientX + "px";
-                document.getElementById("selection").style.maxWidth = (screen.width - event.clientX - 20) + "px";
+                document.getElementById("selection").style.top =
+                    event.clientY + "px";
+                document.getElementById("selection").style.left =
+                    event.clientX + "px";
+                document.getElementById("selection").style.maxWidth =
+                    screen.width - event.clientX - 20 + "px";
 
                 speaking(selectedText.trim());
 
@@ -65,9 +70,8 @@ document.onmouseup = (event) => {
                     .then((response) => response.json())
                     .then((json) => {
                         console.log(json[0].map((item) => item[0]).join(""));
-                        document.getElementById("selection-text").innerHTML = json[0]
-                            .map((item) => item[0])
-                            .join("");
+                        document.getElementById("selection-text").innerHTML =
+                            json[0].map((item) => item[0]).join("");
                     })
                     .catch((error) => {
                         console.log(error);
@@ -78,7 +82,7 @@ document.onmouseup = (event) => {
             } else {
                 document.getElementById("selection").style.display = "none";
             }
-        } catch { }
+        } catch {}
     }
 };
 
@@ -90,11 +94,14 @@ function createElementFromHTML(htmlString) {
 }
 
 for (let i = 1; i <= 12; i++) {
-    let button = createElementFromHTML(`<button class="accordion">Unit ${i}</button>`);
+    let button = createElementFromHTML(
+        `<button class="accordion">Unit ${i} - ${unitThemes[i - 1]}</button>`
+    );
     document.getElementById("grade-nine").appendChild(button);
     let content = createElementFromHTML(
         `<div class="panel">
             <div><a id="c-${i}">Thêm thẻ của Unit ${i} vào bộ thẻ</a></div>
+            <br>
             <div><a id="p-${i}">Đọc bài đọc có sử dụng các từ của Unit ${i}</a></div>
         </div>`
     );
@@ -124,11 +131,13 @@ for (let i = 1; i <= 12; i++) {
 
         document.getElementById("alert").style.transform = "scale(1)";
         document.getElementById("alert").style.visibility = "visible";
-        document.getElementById("alert").innerHTML = `Đã thêm ${words[i].length} từ của Unit ${i} vào bộ thẻ.`;
+        document.getElementById(
+            "alert"
+        ).innerHTML = `Đã thêm ${words[i].length} từ của Unit ${i} vào bộ thẻ.`;
         setTimeout(() => {
             document.getElementById("alert").style.transform = "scale(0)";
         }, 2_000);
-    }
+    };
 }
 
 // Read paragraphs
@@ -141,6 +150,7 @@ document.getElementById("close-reading-menu").onclick = () => {
 for (let i = 1; i <= 12; i++) {
     document.getElementById(`p-${i}`).onclick = () => {
         popup.classList.add("show");
-        document.getElementById("paragraph-holder").innerHTML = paragraphs[i - 1];
-    }
+        document.getElementById("paragraph-holder").innerHTML =
+            paragraphs[i - 1];
+    };
 }

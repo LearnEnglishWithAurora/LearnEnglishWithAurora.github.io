@@ -6,6 +6,6 @@ const auth = getAuth(app);
 
 onAuthStateChanged(auth, (user) => {
     if (!user) {
-        window.location.replace("/aurora");
+        window.location.replace("/");
     }
 });

@@ -2,14 +2,14 @@
     margin: 0;
 }
 
+body {
+    overflow-y: hidden;
+}
+
 #content {
     overflow-x: hidden;
     overflow-y: scroll;
-
     text-align: justify;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
 }
 
 #content span {
@@ -79,8 +79,9 @@
 /* Test */
 
 .accordion {
-    background-color: #f4f4f4;
-    color: #444;
+    background-color: #1dabe9;
+    color: white;
+    font-weight: 600;
     cursor: pointer;
     padding: 18px;
     width: 100%;

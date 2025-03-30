@@ -1,3 +1,13 @@
+#attention-reveal {
+  position: fixed;
+  top: 1rem;
+}
+
+#attention-drag {
+  position: fixed;
+  bottom: 1rem;
+}
+
 .card>* {
   margin: 0;
   padding: 0;

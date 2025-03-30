@@ -153,7 +153,7 @@
     font-weight: 400;
     line-height: 3;
     color: #212529;
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
     background-clip: padding-box;
     border: none;
     appearance: none;
@@ -163,10 +163,15 @@
     margin-bottom: 1.5rem
 }
 
+#learn-menu {
+    background-color: #fcfdef;
+}
+
 .pop-up {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #fcfdef;
 }
 
 .pop-up>div {

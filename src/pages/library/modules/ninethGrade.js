@@ -1,3 +1,18 @@
+export const unitThemes = [
+    "Local Community",
+    "City Life",
+    "Health Living For Teens",
+    "Remembering The Past",
+    "Our Experiences",
+    "Vietnamese Lifestyle: Then And Now",
+    "Natural Wonders Of The World",
+    "Tourism",
+    "World Englishes",
+    "Planet Earth",
+    "Electronics Devices",
+    "Career Choices"
+];
+
 export const words = [
     [
         ["artisan", "thợ làm nghề thủ công"],

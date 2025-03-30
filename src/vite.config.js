@@ -22,11 +22,13 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: resolve(__dirname, "./index.html"),
+                error: resolve(__dirname, "./404.html"),
+                demonstration: resolve(__dirname, "./demonstration.html"),
                 login: resolve(__dirname, "./pages/login/index.html"),
                 profile: resolve(__dirname, "./pages/profile/index.html"),
                 library: resolve(__dirname, "./pages/library/index.html"),
                 home: resolve(__dirname, "./pages/home/index.html"),
-                test: resolve(__dirname, "./pages/test/index.html"),
+                // test: resolve(__dirname, "./pages/test/index.html"),
             },
         },
     },
