@@ -207,3 +207,25 @@
     cursor: pointer;
     background-color: #1f80e0;
 }
+
+#alert {
+    position: absolute;
+    bottom: 70px;
+
+    z-index: 10;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    width: fit-content;
+    max-width: calc(100% - 100px);
+
+    padding: 20px;
+    background-color: #2eb885;
+    border-radius: 10px;
+    color: white;
+
+    transition: transform 0.3s;
+    transform: scale(0);
+    visibility: hidden;
+    /* visibility: visible; */
+}

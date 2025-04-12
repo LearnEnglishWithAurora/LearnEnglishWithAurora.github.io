@@ -113,6 +113,14 @@ function addToCardList(type, word, meaning, example, id) {
             localStorage.setItem("yellow", JSON.stringify(yellow));
         }
 
+        document.getElementById("alert").style.transform = "scale(1)";
+        document.getElementById("alert").style.visibility = "visible";
+        document.getElementById(
+            "alert"
+        ).innerHTML = `Đã xóa từ này khỏi bộ thẻ.`;
+        setTimeout(() => {
+            document.getElementById("alert").style.transform = "scale(0)";
+        }, 2_000);
         deleteDoc(doc(db, email, id));
     };
 }

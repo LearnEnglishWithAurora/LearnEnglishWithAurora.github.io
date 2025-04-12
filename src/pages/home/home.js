@@ -171,6 +171,13 @@ document.getElementById("submit").onclick = async () => {
         document.getElementById("meaning").value = "";
         document.getElementById("example").value = "";
 
+        document.getElementById("alert").style.transform = "scale(1)";
+        document.getElementById("alert").style.visibility = "visible";
+        document.getElementById("alert").innerHTML = `Đã thêm 1 từ vào bộ thẻ.`;
+        setTimeout(() => {
+            document.getElementById("alert").style.transform = "scale(0)";
+        }, 2_000);
+
         await addDoc(collection(db, email), {
             word: word,
             meaning: meaning,
