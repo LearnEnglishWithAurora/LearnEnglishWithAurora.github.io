@@ -84,6 +84,7 @@ document.getElementById("close-learn-menu").onclick = () => {
     speechSynthesis.cancel();
 };
 
+// Start learning
 document.getElementById("start").onclick = () => {
     if (green.length != 0) {
         document.getElementById("learn-menu").classList.toggle("show");
@@ -206,15 +207,15 @@ document.getElementById("submit").onclick = async () => {
 // Time loop to update cards'states
 setTimeout(() => {
     setInterval(() => {
-        green = localStorage.getItem("green")
-            ? JSON.parse(localStorage.getItem("green"))
-            : [];
-        blue = localStorage.getItem("blue")
-            ? JSON.parse(localStorage.getItem("blue"))
-            : [];
-        yellow = localStorage.getItem("yellow")
-            ? JSON.parse(localStorage.getItem("yellow"))
-            : [];
+        // green = localStorage.getItem("green")
+        //     ? JSON.parse(localStorage.getItem("green"))
+        //     : [];
+        // blue = localStorage.getItem("blue")
+        //     ? JSON.parse(localStorage.getItem("blue"))
+        //     : [];
+        // yellow = localStorage.getItem("yellow")
+        //     ? JSON.parse(localStorage.getItem("yellow"))
+        //     : [];
 
         let i = 0;
         blue.forEach((blueCard) => {
