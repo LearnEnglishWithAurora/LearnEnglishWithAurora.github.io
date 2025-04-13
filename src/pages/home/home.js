@@ -207,15 +207,18 @@ document.getElementById("submit").onclick = async () => {
 // Time loop to update cards'states
 setTimeout(() => {
     setInterval(() => {
-        // green = localStorage.getItem("green")
-        //     ? JSON.parse(localStorage.getItem("green"))
-        //     : [];
-        // blue = localStorage.getItem("blue")
-        //     ? JSON.parse(localStorage.getItem("blue"))
-        //     : [];
-        // yellow = localStorage.getItem("yellow")
-        //     ? JSON.parse(localStorage.getItem("yellow"))
-        //     : [];
+        if (localStorage.getItem("needToUpdate") == "true") {
+            green = localStorage.getItem("green")
+                ? JSON.parse(localStorage.getItem("green"))
+                : [];
+            blue = localStorage.getItem("blue")
+                ? JSON.parse(localStorage.getItem("blue"))
+                : [];
+            yellow = localStorage.getItem("yellow")
+                ? JSON.parse(localStorage.getItem("yellow"))
+                : [];
+            localStorage.setItem("needToUpdate", "false");
+        }
 
         let i = 0;
         blue.forEach((blueCard) => {

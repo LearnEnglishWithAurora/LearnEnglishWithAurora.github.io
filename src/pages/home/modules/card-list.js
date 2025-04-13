@@ -100,6 +100,7 @@ function addToCardList(type, word, meaning, example, id) {
     let card = createElementFromHTML(cardHTML);
     document.getElementById("card-list").appendChild(card);
     document.getElementById(id).onclick = () => {
+        localStorage.setItem("needToUpdate", "true");
         document.getElementById(id).parentElement.parentElement.remove();
 
         if (type == "green-card") {
